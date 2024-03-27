@@ -96,8 +96,31 @@ np.sqrt(df["Highly Positive Skew"])
 np.square(df["Highly Positive Skew"])
 ![image](https://github.com/Aaron-0111/EXNO-3-DS/assets/149347631/449d4488-e10b-4ffa-a780-a33ee613666b)
 df["Highly Positive Skew_boxcox"],parameters=stats.boxcox(df["Highly Positive Skew"]) df
+![image](https://github.com/Aaron-0111/EXNO-3-DS/assets/149347631/0b9e38ed-72f0-4779-9826-46e58307da6e)
+df["Moderate Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Moderate Negative Skew"])
+df.skew()
+![image](https://github.com/Aaron-0111/EXNO-3-DS/assets/149347631/ee80217f-4f3b-4b6d-940e-2d940c4340a8)
+df["Highly Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Highly Negative Skew"])
+df.skew()
+![image](https://github.com/Aaron-0111/EXNO-3-DS/assets/149347631/b671092d-9971-4ede-beb1-82f068a4caed)
+import matplotlib.pyplot as plt import seaborn as sns import statsmodels.api as sm import scipy.stats as stats
+
+sm.qqplot(df["Moderate Negative Skew"],line='45')
+
+plt.show()
+![image](https://github.com/Aaron-0111/EXNO-3-DS/assets/149347631/41896cef-34b9-47e2-832f-084a972224b4)
+sm.qqplot(np.reciprocal(df["Moderate Negative Skew"]),line='45')
+![image](https://github.com/Aaron-0111/EXNO-3-DS/assets/149347631/58ea4a79-8619-440f-bf6e-5eca3e1d3fec)
+from sklearn.preprocessing import QuantileTransformer
+qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
+
+df["Moderate Negative Skew"]=qt.fit_transform(df[["Moderate Negative Skew"]])
+
+sm.qqplot(df["Moderate Negative Skew"],line='45')
+plt.show()
+![image](https://github.com/Aaron-0111/EXNO-3-DS/assets/149347631/4fb3b1b1-81c6-437c-afe1-b393f60f8e32)
 
 # RESULT:
-       #
+        Hence performing Feature Encoding and Transformation process is Successful.
 
        
